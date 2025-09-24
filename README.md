@@ -1,7 +1,12 @@
-# oh-my-zsh-config
-My script for installing and configuring zsh and oh-my-zsh in ubuntu
+# ⚡ ubuntu-scripts
+A collection of scripts for quickly setting up a development **Ubuntu**.
 
-### Setup:
-  ```bash
-  bash <(curl -fsSL https://raw.githubusercontent.com/Paladin4ick/oh-my-zsh-config/main/setup-zsh.sh)
-  ```
+## 🚀 Setup:
+  ### Clone the repository:
+    ```bash
+    git clone https://github.com/Paladin4ick/ubuntu-config.git && cd ubuntu-config
+    ```
+  ### Make all scripts executable:
+    ```bash
+    chmod +x *.sh
+    ```
