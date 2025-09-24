@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 set -e
 
+echo "Обновление системы и установка zsh..."
 sudo apt update && sudo apt install -y zsh git curl
 
+echo "Установка oh-my-zsh..."
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 
+echo "Установка темы powerlevel10k..."
 ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
 
 if [ ! -d "$ZSH_CUSTOM/themes/powerlevel10k" ]; then
@@ -14,6 +17,7 @@ if [ ! -d "$ZSH_CUSTOM/themes/powerlevel10k" ]; then
     $ZSH_CUSTOM/themes/powerlevel10k
 fi
 
+echo "Установка подстветки синтаксиса..."
 if [ ! -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]; then
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
     $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
@@ -25,3 +29,4 @@ sed -i 's/^plugins=.*/plugins=(git docker docker-compose python ssh vscode eza z
 
 chsh -s $(which zsh)
 echo "Установка завершена. Перезапусти терминал или выполни 'exec zsh'"
+
