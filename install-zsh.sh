@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 set -e
 
-echo "Обновление системы и установка zsh..."
-sudo apt-get update && sudo apt-get install -y zsh git curl
+# Исправление концов строк (если скрипт был создан в Windows)
+if command -v dos2unix >/dev/null 2>&1; then
+    dos2unix "$0" >/dev/null 2>&1
+fi
 
-# Проверка, установлен ли zsh
-if ! command -v zsh &> /dev/null; then
-    echo "Ошибка: zsh не установлен"
+echo "Обновление системы и установка zsh, git, curl..."
+sudo apt-get update && sudo apt-get install -y zsh git curl
+if [ $? -ne 0 ]; then
+    echo "Ошибка: не удалось установить zsh, git или curl. Проверьте репозитории и интернет-соединение."
     exit 1
 fi
 
