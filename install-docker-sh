@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-echo "Обновление системы и установка сертификатов"
 sudo apt-get update
 sudo apt-get install -y ca-certificates curl gnupg lsb-release
 
@@ -14,7 +13,6 @@ echo \
   $(. /etc/os-release && echo ${UBUNTU_CODENAME:-$VERSION_CODENAME}) stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-echo "Установка докера и плагина compose"
 sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
@@ -23,4 +21,4 @@ sudo systemctl start docker
 
 sudo usermod -aG docker $USER
 
-echo "✅ Docker установлен. Перезапусти систему или выйди/зайди в сессию, чтобы группа docker применилась."
+echo "✅ Docker installed successfully. Reboot or log out/in to apply the docker group."
